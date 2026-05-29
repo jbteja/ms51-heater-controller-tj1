@@ -52,13 +52,33 @@ uint8_t count_digits(uint32_t digt) {
     return count;
 }
 
-void float_to_str(float x, uint8_t decimalPoint, uint8_t *outStr) {
+/* To calibrate the value based on sensor position, environment etc. */
+float tune_rcvd_val(float f) {
+    if (f >= 400) {
+        return f * 2.0;
+    }
+    else if (f >= 200) {
+        return f * 1.75;
+    }
+    else if (f >= 100) {
+        return f * 1.50;
+    }
+    else if (f >= 50) {
+        return f * 1.25;
+    }
+    else {
+        return f;
+    }
+}
+
+/* To convert int, float to string for display */
+void float_to_str(float f, uint8_t decimalPoint, uint8_t *outStr) {
     uint32_t units, decimals, i = 0, mul = 1;
     while(i++ < decimalPoint) {
         mul *= 10;
     }
-    decimals = (int)(x * mul) % mul;
-    units = (int)x;
+    decimals = (int)(f * mul) % mul;
+    units = (int)f;
     i = count_digits(units) + decimalPoint + 1;
 
     memset(outStr, '0', i);
@@ -95,40 +115,26 @@ void display_uint(uint8_t x_pos, uint8_t y_pos, uint16_t value) {
         ch[2] = (((value % 1000) / 100) + 0x30);
         ch[3] = (((value % 100) / 10) + 0x30);
         ch[4] = ((value % 10) + 0x30);
-        ch[5] = '\0';
     
     } else if((value > 999) && (value <= 9999)) {
         ch[0] = (((value % 10000)/ 1000) + 0x30);
         ch[1] = (((value % 1000) / 100) + 0x30);
         ch[2] = (((value % 100) / 10) + 0x30);
         ch[3] = ((value % 10) + 0x30);
-        ch[4] = '\0';
-        ch[5] = '\0';
     
     } else if((value > 99) && (value <= 999)) {
         ch[0] = (((value % 1000) / 100) + 0x30);
         ch[1] = (((value % 100) / 10) + 0x30);
         ch[2] = ((value % 10) + 0x30);
-        ch[3] = '\0';
-        ch[4] = '\0';
-        ch[5] = '\0';
     
     } else if((value > 9) && (value <= 99)) {
         ch[0] = (((value % 100) / 10) + 0x30);
         ch[1] = ((value % 10) + 0x30);
-        ch[2] = '\0';
-        ch[3] = '\0';
-        ch[4] = '\0';
-        ch[5] = '\0';
 
     } else {
         ch[0] = ((value % 10) + 0x30);
-        ch[1] = '\0';
-        ch[2] = '\0';
-        ch[3] = '\0';
-        ch[4] = '\0';
-        ch[5] = '\0';
     }
+
     LiquidCrystal_setCursor(x_pos, y_pos);
     LiquidCrystal_putStr(ch);
 }

@@ -2,15 +2,16 @@
 
 const char allStringsDpy[][17] = {
   //"1234567890123456\0"
+    "  Sanitary Pad  \0",
+    "   Incinerator  \0",
     "    Hygienic    \0",
     "    Disposal    \0",
-    "   Drop Only    \0",
-    "  Used Napkins  \0",
     "Pres Red to Stop\0",
     " Green to Start \0" 
 };
 
-uint8_t tempStr[8] = {'\0'};
+float vTemp = 0.0;
+uint8_t tempStr[9] = {'\0'};
 uint8_t heaterState = 0, lastState = 0;
 uint8_t toggle = 1, lastToggle = 0, dpy = 0;
 int8_t sec = 0, min = 0, hrs = 0, lastSec = -1;
@@ -34,20 +35,20 @@ void display_off_state(void){
     LiquidCrystal_clear();
 }
 
-void display_execution_state(void) {
+void display_exe_state(void) {
     float tr = 0.00;
-    uint8_t ittr, samples = 3;
+    uint8_t ittr;
 
     if (sec != lastSec) {
-        //Max6675 in Degs 
-        for (ittr = 0; ittr < samples; ittr++) {
+        // Max6675 in Degrees
+        for (ittr = 0; ittr < TEMP_SENSOR_SAMPLES; ittr++) {
             tr += Max6675_readCelsius();
             delay_ms(10);
             if (tr == 0.00) {
                 break;
             }
         }
-        tr = tr/samples;
+        tr = tr / TEMP_SENSOR_SAMPLES;
 
         LiquidCrystal_setCursor(0, 0);
         LiquidCrystal_putStr("Time ->");
@@ -62,7 +63,7 @@ void display_execution_state(void) {
         if (tr == 0.00) {
             LiquidCrystal_putStr(" Error! ");
         } else {
-            float_to_str(tr, 2, tempStr);
+            float_to_str(tune_rcvd_val(tr), 2, tempStr);
             LiquidCrystal_putStr("      ");
             LiquidCrystal_setCursor(8, 1);
             LiquidCrystal_putStr(tempStr);
@@ -74,7 +75,7 @@ void display_execution_state(void) {
         lastSec = sec;
     }
 
-    //For clock effect
+    // For clock effect
     if (toggle != lastToggle) {
         if(toggle) {
             LiquidCrystal_setCursor(10, 0);
@@ -87,6 +88,75 @@ void display_execution_state(void) {
             LiquidCrystal_setCursor(13, 0);
             LiquidCrystal_putChar(' ');
         }
+        lastToggle = toggle;
+    }
+}
+
+void display_exe_state_valid_temp(void) {
+    float tr = 0.00;
+    uint8_t ittr, vSamples = 0;
+
+    if (sec != lastSec) {
+        // Read temp only if DISPLAY_TEMP is enabled
+        if (DISPLAY_TEMP == 1) {
+            // Max6675 in Degrees
+            for (ittr = 0; ittr < TEMP_SENSOR_SAMPLES; ittr++) {
+                float tc = Max6675_readCelsius();
+                delay_ms(10);
+
+                // Only accumulate valid readings
+                if (tc != 0.00) {
+                    tr += tc;
+                    tc = 0.00;
+                    vSamples++;
+                
+                } else { 
+                    break;
+                }
+            }
+
+            // Average only if we have valid samples
+            if (vSamples > 0) {
+                tr /= vSamples;
+                vSamples = 0;
+            
+                // Only update vTemp if the new temp is higher
+                if (tr > vTemp) {
+                    vTemp = tr;
+                    tr = 0.00;
+                }
+            }
+        }
+
+        // Display the time
+        LiquidCrystal_setCursor(0, 0);
+        LiquidCrystal_putStr("Time ->");
+        display_char(8, 0, hrs);
+        display_char(11, 0, min);
+        display_char(14, 0, sec);
+
+        // Display the temperature only if DISPLAY_TEMP is 1 and the temperature is valid
+        if (DISPLAY_TEMP == 1 && vTemp > 0.01) {
+            LiquidCrystal_setCursor(0, 1);
+            LiquidCrystal_putStr("Temp ->");
+            LiquidCrystal_setCursor(8, 1);
+
+            float_to_str(tune_rcvd_val(vTemp), 2, tempStr);
+            LiquidCrystal_putStr(tempStr);
+            LiquidCrystal_setCursor(14, 1);
+            LiquidCrystal_putChar(0xDF);  // Degree symbol
+            LiquidCrystal_putChar('C');
+        }
+
+        lastSec = sec;
+    }
+
+    // Toggle for clock blinking effect
+    if (toggle != lastToggle) {
+        LiquidCrystal_setCursor(10, 0);
+        LiquidCrystal_putChar(toggle ? ':' : ' ');
+        LiquidCrystal_setCursor(13, 0);
+        LiquidCrystal_putChar(toggle ? ':' : ' ');
         lastToggle = toggle;
     }
 }
@@ -106,16 +176,26 @@ void heater_on(void) {
     LED_RED = HIGH;
     heaterState = HIGH;
 
-    //Clock
+    // Set clock for heater operation
     ms = 0;
     hrs = ONHRS;
     min = ONMIN;
     sec = ONSEC;
+
+    // Safety clock
+    if (IS_SENSOR == 1) {
+        float tc = Max6675_readCelsius();
+
+        if (tc > 0.01 && tc > SAFE_TEMP) {
+            min = SAFE_ONMIN;
+        }
+    }
+
     toggle = 0;
     set_timer1_tl_th(DIV12_1ms);
     ENABLE_TIMER1_INTERRUPT;
     SET_INT_Timer1_LEVEL3;
-    set_TCON_TR1; //Timer 1 Run
+    set_TCON_TR1; // Timer 1 Run
 }
 
 void heater_off(void) {
@@ -123,9 +203,9 @@ void heater_off(void) {
     LED_GRN = HIGH;
     LED_RED = LOW;
 
-    //Clock
+    // Clock
     lastToggle = 1;
-    clr_TCON_TR1; //Timer 1 Stop
+    clr_TCON_TR1; // Timer 1 Stop
     DISABLE_TIMER1_INTERRUPT;
 }
 
@@ -133,7 +213,7 @@ void heater_auto_cutoff(void) {
     if ((sec == 0) && (min == 0) && (hrs == 0)) {
         heaterState = LOW;
     } else {
-        display_execution_state();
+        display_exe_state_valid_temp();
     }
 }
 
@@ -187,30 +267,30 @@ void setup(void) {
 	MAX6675_GPIO_init();
     Max6675_SPI_init();
 
-    //Timer 0
+    // Timer 0
     start_timer0_mode1(DIV12_1ms);
 
-	//Ext Int 1
+	// Ext Int 1
 	set_P17;
 	INT1_LOW_LEVEL_TRIG;
     set_IE_EX1;
 
-    //Timer 1
+    // Timer 1
     ENABLE_TIMER1_MODE1;
     TIMER1_FSYS_DIV12;
 
-	//Heater
+	// Heater
     heater_off();
 
-    //LCD
+    // LCD
     LiquidCrystal_init(16, 2, 0);
     LiquidCrystal_clear();
     LiquidCrystal_setCursor(4, 0);
     LiquidCrystal_putStr("WELCOME");
     LiquidCrystal_setCursor(2, 1);
     
-    LiquidCrystal_putStr("Sandi Micro");
-    delay_ms(500);
+    LiquidCrystal_putStr("Sandi Community");
+    delay_ms(300);
     display_normal_state(dpy);
     
     ENABLE_GLOBAL_INTERRUPT;
@@ -222,8 +302,8 @@ void main(void) {
 
   while(1) {
     if ((heaterState == LOW) && (lastState == HIGH)) {
-        display_off_state();
         heater_off();
+        display_off_state();
         lastState = LOW;
 
     } else if ((heaterState == LOW) && (SW_SART == LOW)) {

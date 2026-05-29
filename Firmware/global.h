@@ -6,13 +6,22 @@
 #include "spi.h"
 #include "max6675.h"
 
+// Temperate sensor
+#define IS_SENSOR 1
+#define DISPLAY_TEMP 1
+#define TEMP_SENSOR_SAMPLES 3
+
 // CountDown Timer
 #define ONHRS 0
 #define ONMIN 15
 #define ONSEC 0
 
+// Safe CountDown Timer
+#define SAFE_ONMIN 10
+#define SAFE_TEMP 320.00
+
 // Retry interval
-#define LCD_NRL_DPY_INT 10*1000 // 10 Sec
+#define LCD_NRL_DPY_INT 6*1000 // Sec
 
 // Timer 1
 #define DIV12_1ms TIMER_DIV12_VALUE_1ms_FOSC_16000000+26
@@ -77,7 +86,8 @@ void stop_timer0_mode1(void);
 void set_timer1_tl_th(uint16_t value);
 
 uint8_t count_digits(uint32_t digt);
-void float_to_str(float x, uint8_t decimalPoint, uint8_t *outStr);
+float tune_rcvd_val(float f);
+void float_to_str(float f, uint8_t decimalPoint, uint8_t *outStr);
 
 void display_char(uint8_t x_pos, uint8_t y_pos, uint8_t value);
 void display_uint(uint8_t x_pos, uint8_t y_pos, uint16_t value);
