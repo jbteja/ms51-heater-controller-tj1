@@ -1,0 +1,4 @@
+* text=auto eol=lf
+
+# Ignore files for language bar statistics
+Hardware/BOM/** linguist-vendored
