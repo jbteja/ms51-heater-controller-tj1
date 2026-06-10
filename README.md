@@ -9,7 +9,7 @@
 
 ## 🚀 Overview
 
-A heater controller project built around the Nuvoton MS51FB9AE. It delivers deterministic operation, safety auto-cutoff, preset timer modes, and temperature measurement using a 750°C K-type thermocouple.
+A heater controller project built around the Nuvoton MS51FB9AE. It delivers deterministic operation, safety auto-cutoff, preset timer modes, and temperature measurement using a K‑type thermocouple rated above 750°C.
 
 The custom PCB includes a 16×2 LCD, MAX6675 thermocouple interface, few switches, and a relay for heater control. The design prioritizes temperature safety and reliable performance in a demanding environment.
 
@@ -78,95 +78,87 @@ streetsidesoftware.code-spell-checker
 
 The device was developed through integrated mechanical and electronics design to ensure reliable operation in an incinerator environment. Mechanical requirements included enclosure space, thermal isolation, airflow, mounting, serviceability, and cable routing. Hardware requirements such as sensor interfaces, relay isolation, display visibility, and maintenance access shaped the enclosure and system layout.
 
-## 🔧 Proof of Work
+## 🛠️ Proof of Work
 
-<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec1.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Enclosure design</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec2.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Enclosure design, Side view</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec3.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Enclosure prototype, Front view</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec4.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Mechanical parts before assembly</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec5.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Mechanical parts before assembly</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec6.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Laser cut machine setup</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Embd2.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Tested controllers before delivery</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Embd1.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Inspecting, fixing, and verifying electrical connections</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Mec7.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Tested and ready to be dispatched</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Embd4.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">PCBs before assembly</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Embd3.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">Cables and connectors</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <img src="Hardware/Images/Batch-Rev-C.jpg"style="width:100%; height:auto;">
-    <p style="margin:0.25rem 0 0;">PCBs after assembly, Front view</p>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec1.jpg" width="100%" alt="Enclosure design">
+      <p>Enclosure design</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec2.jpg" width="100%" alt="Enclosure design, Side view">
+      <p>Enclosure design, Side view</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec3.jpg" width="100%" alt="Enclosure prototype, Front view">
+      <p>Enclosure prototype, Front view</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec4.jpg" width="100%" alt="Mechanical parts before assembly">
+      <p>Mechanical parts before assembly</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec5.jpg" width="100%" alt="Mechanical parts before assembly">
+      <p>Mechanical parts before assembly</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec6.jpg" width="100%" alt="Laser cut machine setup">
+      <p>Laser cut machine setup</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Embd2.jpg" width="100%" alt="Tested controllers before delivery">
+      <p>Tested controllers before delivery</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Embd1.jpg" width="100%" alt="Inspecting, fixing, and verifying electrical connections">
+      <p>Inspecting, fixing, and verifying electrical connections</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Mec7.jpg" width="100%" alt="Tested and ready to be dispatched">
+      <p>Tested and ready to be dispatched</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Embd4.jpg" width="100%" alt="PCBs before assembly">
+      <p>PCBs before assembly</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Embd3.jpg" width="100%" alt="Cables and connectors">
+      <p>Cables and connectors</p>
+    </td>
+    <td width="33%" align="center">
+      <img src="Hardware/Images/Batch-Rev-C.jpg" width="100%" alt="PCBs after assembly, Front view">
+      <p>PCBs after assembly, Front view</p>
+    </td>
+  </tr>
+</table>
 
-### 🛠️ Video Demos
+## 🏷️ Video Demos
 
-<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <video
-      src="Hardware/Images/Batch-Rev-C.mp4" style="width:100%; height:auto;"
-      controls
-      controlsList="nodownload"
-      muted
-      playsinline>
-    </video>
-    <p style="margin:0.25rem 0 0;">Controllers</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <video
-      src="Hardware/Images/Prototype-Test1.mp4" style="width:100%; height:auto;"
-      controls
-      controlsList="nodownload"
-      muted
-      playsinline>
-    </video>
-    <p style="margin:0.25rem 0 0;">Test cycle</p>
-  </div>
-  <div style="width:30%; min-width:220px; text-align:center;">
-    <video
-      src="Hardware/Images/Prototype-Test2.mp4" style="width:100%; height:auto;"
-      controls
-      controlsList="nodownload"
-      muted
-      playsinline>
-    </video>
-    <p style="margin:0.25rem 0 0;">Test cycle</p>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <video src="Hardware/Images/Batch-Rev-C.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
+      <p>Controllers</p>
+    </td>
+    <td width="33%" align="center">
+      <video src="Hardware/Images/Prototype-Test1.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
+      <p>Test cycle</p>
+    </td>
+    <td width="33%" align="center">
+      <video src="Hardware/Images/Prototype-Test2.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
+      <p>Test cycle</p>
+    </td>
+  </tr>
+</table>
 
-## ✏️ Conclusion & Current Status
+## 📌 Conclusion & Current Status
 
 The project requirements were successfully met and delivered within the specified timeline, with 20 controller units delivered and deployed in the field. Although an initial requirement of 100 units was anticipated, the full order was not fulfilled by the client. However, the delivered controllers have been operating reliably, meeting the requirement of stable performance for at least two years. The project has been a valuable learning experience in embedded system design, hardware-software co-design, and project management.
 
@@ -174,10 +166,24 @@ The project requirements were successfully met and delivered within the specifie
 
 Following the first year of operation, scheduled maintenance was provided from our side. At the time of this writing, all deployed machines continue to operate successfully, demonstrating reliability under real-world operating conditions.
 
-## 🏷️ Misc: Repository Naming Convention
+## 🔧 Miscellaneous & Notes
+
+### ✏️ Repository Naming Convention
 
 Before I started naming projects in a sequence, I had worked on many projects. When I went back to reuse content or refer to specific details, I usually struggled to find them or had already lost track of them.
 
 Over time, I decided to standardize the naming with “TJ” and continue using it consistently, grouping and organizing both old and new projects into a structured sequence.
 
 Not all projects can be shared publicly because of client restrictions or ownership agreements. As a result, the sequence may have gaps where some projects are not listed or documented. However, I maintain a private record of all projects for my reference and learning.
+
+### ✏️ Privacy‑First Images
+
+All images in this repository have been stripped of metadata to protect privacy and sensitive information. This ensures that no unintended data is shared when the images are viewed or downloaded.
+
+Used **exiftool** to remove metadata from images:
+
+```bash
+exiftool -all= -P -overwrite_original *.png
+exiftool -all= -P -overwrite_original *.jpg
+exiftool -all= -P -overwrite_original *.mp4
+```
