@@ -141,11 +141,13 @@ The device was developed through integrated mechanical and electronics design to
 
 ## 🏷️ Video Demos
 
+
+
 | Demo | File |
 |:---|:---|
-| 📟 Controllers | [`Batch-Rev-C.mp4`](Hardware/Assets/Batch-Rev-C.mp4) |
-| 🔬 Test cycle | [`Prototype-Test1.mp4`](Hardware/Assets/Prototype-Test1.mp4) |
-| 🔬 Test cycle | [`Prototype-Test2.mp4`](Hardware/Assets/Prototype-Test2.mp4) |
+| 📟 Controllers | [`Batch-Rev-C.mp4`](https://github.com/user-attachments/assets/38caba92-163d-486c-91cd-d47db43cc024) |
+| 🔬 Test cycle | [`Prototype-Test1.mp4`](https://github.com/user-attachments/assets/006b11b3-cdbf-497a-a6c1-e160840782f8) |
+| 🔬 Test cycle | [`Prototype-Test2.mp4`](https://github.com/user-attachments/assets/03c04a3a-10fb-4163-b0c6-8f93c4f1aaef) |
 
 ## 📌 Conclusion & Current Status
 
