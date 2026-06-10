@@ -46,8 +46,8 @@ Scope included requirements gathering, controller design, PCB and firmware devel
 <p align="center">
   <table>
     <tr>
-      <td align="center"><strong>Top</strong><br><img src="Hardware/Images/JBT01C.jpg" width="500"></td>
-      <td align="center"><strong>Bottom</strong><br><img src="Hardware/Images/JBT01C-Bottom.jpg" width="500"></td>
+      <td align="center"><strong>Top</strong><br><img src="Hardware/Assets/JBT01C.jpg" width="500"></td>
+      <td align="center"><strong>Bottom</strong><br><img src="Hardware/Assets/JBT01C-Bottom.jpg" width="500"></td>
     </tr>
   </table>
 </p>
@@ -63,7 +63,7 @@ Scope included requirements gathering, controller design, PCB and firmware devel
     ├───3D
     ├───BOM
     ├───Gerbers
-    ├───Images
+    ├───Assets
     └───Source Files
 ```
 
@@ -83,57 +83,57 @@ The device was developed through integrated mechanical and electronics design to
 <table>
   <tr>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec1.jpg" width="100%" alt="Enclosure design">
+      <img src="Hardware/Assets/Mec1.jpg" width="100%" alt="Enclosure design">
       <p>Enclosure design</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec2.jpg" width="100%" alt="Enclosure design, Side view">
+      <img src="Hardware/Assets/Mec2.jpg" width="100%" alt="Enclosure design, Side view">
       <p>Enclosure design, Side view</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec3.jpg" width="100%" alt="Enclosure prototype, Front view">
+      <img src="Hardware/Assets/Mec3.jpg" width="100%" alt="Enclosure prototype, Front view">
       <p>Enclosure prototype, Front view</p>
     </td>
   </tr>
   <tr>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec4.jpg" width="100%" alt="Mechanical parts before assembly">
+      <img src="Hardware/Assets/Mec4.jpg" width="100%" alt="Mechanical parts before assembly">
       <p>Mechanical parts before assembly</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec5.jpg" width="100%" alt="Mechanical parts before assembly">
+      <img src="Hardware/Assets/Mec5.jpg" width="100%" alt="Mechanical parts before assembly">
       <p>Mechanical parts before assembly</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec6.jpg" width="100%" alt="Laser cut machine setup">
+      <img src="Hardware/Assets/Mec6.jpg" width="100%" alt="Laser cut machine setup">
       <p>Laser cut machine setup</p>
     </td>
   </tr>
   <tr>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Embd2.jpg" width="100%" alt="Tested controllers before delivery">
+      <img src="Hardware/Assets/Embd2.jpg" width="100%" alt="Tested controllers before delivery">
       <p>Tested controllers before delivery</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Embd1.jpg" width="100%" alt="Inspecting, fixing, and verifying electrical connections">
+      <img src="Hardware/Assets/Embd1.jpg" width="100%" alt="Inspecting, fixing, and verifying electrical connections">
       <p>Inspecting, fixing, and verifying electrical connections</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Mec7.jpg" width="100%" alt="Tested and ready to be dispatched">
+      <img src="Hardware/Assets/Mec7.jpg" width="100%" alt="Tested and ready to be dispatched">
       <p>Tested and ready to be dispatched</p>
     </td>
   </tr>
   <tr>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Embd4.jpg" width="100%" alt="PCBs before assembly">
+      <img src="Hardware/Assets/Embd4.jpg" width="100%" alt="PCBs before assembly">
       <p>PCBs before assembly</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Embd3.jpg" width="100%" alt="Cables and connectors">
+      <img src="Hardware/Assets/Embd3.jpg" width="100%" alt="Cables and connectors">
       <p>Cables and connectors</p>
     </td>
     <td width="33%" align="center">
-      <img src="Hardware/Images/Batch-Rev-C.jpg" width="100%" alt="PCBs after assembly, Front view">
+      <img src="Hardware/Assets/Batch-Rev-C.jpg" width="100%" alt="PCBs after assembly, Front view">
       <p>PCBs after assembly, Front view</p>
     </td>
   </tr>
@@ -141,22 +141,11 @@ The device was developed through integrated mechanical and electronics design to
 
 ## 🏷️ Video Demos
 
-<table>
-  <tr>
-    <td width="33%" align="center">
-      <video src="Hardware/Images/Batch-Rev-C.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
-      <p>Controllers</p>
-    </td>
-    <td width="33%" align="center">
-      <video src="Hardware/Images/Prototype-Test1.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
-      <p>Test cycle</p>
-    </td>
-    <td width="33%" align="center">
-      <video src="Hardware/Images/Prototype-Test2.mp4" width="100%" controls controlsList="nodownload" muted playsinline></video>
-      <p>Test cycle</p>
-    </td>
-  </tr>
-</table>
+| Demo | File |
+|:---|:---|
+| 📟 Controllers | [`Batch-Rev-C.mp4`](Hardware/Assets/Batch-Rev-C.mp4) |
+| 🔬 Test cycle | [`Prototype-Test1.mp4`](Hardware/Assets/Prototype-Test1.mp4) |
+| 🔬 Test cycle | [`Prototype-Test2.mp4`](Hardware/Assets/Prototype-Test2.mp4) |
 
 ## 📌 Conclusion & Current Status
 
@@ -176,7 +165,7 @@ Over time, I decided to standardize the naming with “TJ” and continue using 
 
 Not all projects can be shared publicly because of client restrictions or ownership agreements. As a result, the sequence may have gaps where some projects are not listed or documented. However, I maintain a private record of all projects for my reference and learning.
 
-### ✏️ Privacy‑First Images
+### ✏️ Privacy‑First Assets
 
 All images in this repository have been stripped of metadata to protect privacy and sensitive information. This ensures that no unintended data is shared when the images are viewed or downloaded.
 
