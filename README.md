@@ -41,7 +41,7 @@ Scope included requirements gathering, controller design, PCB and firmware devel
 - **JBT01B** - Added filtering capacitor and improved PCB layout for better noise immunity.
 - **JBT01C** - Added removable LCD headers and improved accessibility and mounting **([Demo Video](https://youtu.be/qEdxYMNRhFU?si=CgpE43CbFfmUwAwB))**.
 
-## 📚 Controller Board Design
+## ✌️ Controller Board Design
 
 <p align="center">
   <table>
@@ -67,7 +67,7 @@ Scope included requirements gathering, controller design, PCB and firmware devel
     └───Source Files
 ```
 
-## VS Code Extensions
+## 🔗 VS Code Extensions
 
 ```bash
 cl.keil-assistant
@@ -187,3 +187,19 @@ exiftool -all= -P -overwrite_original *.png
 exiftool -all= -P -overwrite_original *.jpg
 exiftool -all= -P -overwrite_original *.mp4
 ```
+
+### ✏️ LCD Driver, Library Development
+
+Reused, tested and adapted an existing 16x2 LCD library for the MS51FB9AE, which is compatible with HD44780 and ST7066 controllers. The library supports modular pin mapping and 4-bit mode, allowing for flexible hardware configurations. It provides functions for initializing the LCD, sending commands and data, and displaying characters and strings on the screen.
+
+### ✏️ Project Backstory
+
+This requirement came from within my professional network, and since I knew them personally, I had to pitch in on an urgent basis.
+
+The pain point? The previous PCBs used in earlier machines kept failing every 6 to 9 months, causing repeated downtime. The client had already spent a significant amount on replacements and repairs.
+
+The original design was not only costly but also lacked basic engineering foresight. It used a separate, bulky power supply, had no proper connectors or terminals for heater integration, and offered no thermal isolation or reliable mounting.
+
+The previous client's control board was 2.5 times costlier than what I ultimately delivered and assembled.
+
+In the end, a reliable, cost‑effective controller replaced a overpriced design along with machine wire routing and place holders to run the wires are included in the machine mechanical design.
