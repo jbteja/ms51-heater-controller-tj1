@@ -1,17 +1,18 @@
 # Deterministic Heater Controller
 
-| Property          | Value                                          |
-|-------------------|------------------------------------------------|
-| Project ID        | tj01 (Previously JBT01)                        |
-| Started           | 14th February 2023                             |
-| Stack             | C, Keil uVision, KiCAD 6.0.0, Nuvoton MCUs     |
-| Keywords          | MS51FB9AE, MAX6675, K-Type Thermocouple, T91-30A, <br>110/230V AC to 12V DC SMPS, LCD Display, Timer 2 |
+| Property          | Value                                            |
+|-------------------|--------------------------------------------------|
+| Project ID        | tj01 (Previously JBT01)                          |
+| Started           | 14th February 2023                               |
+| Stack             | C, Keil uVision, KiCAD 6.0.0, Nuvoton MCUs       |
+| Keywords          | MS51FB9AE, MAX6675, K-Type Thermocouple, T91-30A,<br>110/230V AC to 12V DC SMPS, LCD Display, Timer 2 |
+| Status            | Completed, Delivered to the client and archived. |
 
 ## 🚀 Overview
 
 A heater controller project built around the Nuvoton MS51FB9AE. It delivers deterministic operation, safety auto-cutoff, preset timer modes, and temperature measurement using a K‑type thermocouple rated above 750°C.
 
-The custom PCB includes a 16×2 LCD, MAX6675 thermocouple interface, few switches, and a relay for heater control. The design prioritizes temperature safety and reliable performance in a demanding environment.
+The custom PCB includes a 16×2 LCD, MAX6675 thermocouple interface, a few switches, and a relay for heater control. The design prioritizes temperature safety and reliable performance in a demanding environment.
 
 ## ✍️ Requirement
 
@@ -24,9 +25,9 @@ Scope included requirements gathering, controller design, PCB and firmware devel
 ## 🧩 Project Highlights
 
 - Designed and developed the complete system from scratch, including requirements, hardware, firmware, testing, and delivery.
-- Initially targeted STM8/STM32, then switched to MS51FB9AE because of availability and cost advantages.
+- Initially targeted STM8/STM32, then switched to the MS51FB9AE because of availability and cost advantages.
 - Iteratively improved the design based on feedback and testing, including PCB layout, component selection, and feature updates.
-- Used mechanical and PCB co-design to ensure the controller fit the enclosure, was serviceable, and handled thermal isolation and airflow.
+- Used mechanical and PCB co-design to ensure the controller fit the enclosure, remained serviceable, and handled thermal isolation and airflow.
 
 - **Firmware Highlights:**
   - Implemented a state machine to manage operating modes and ensure deterministic behavior.
@@ -76,7 +77,7 @@ streetsidesoftware.code-spell-checker
 
 ## 🏗️ Mechanical & Hardware Co-Design
 
-The device was developed through integrated mechanical and electronics design to ensure reliable operation in an incinerator environment. Mechanical requirements included enclosure space, thermal isolation, airflow, mounting, serviceability, and cable routing. Hardware requirements such as sensor interfaces, relay isolation, display visibility, and maintenance access shaped the enclosure and system layout.
+The device was developed through integrated mechanical and electronic design to ensure reliable operation in an incinerator environment. Mechanical requirements included enclosure space, thermal isolation, airflow, mounting, serviceability, and cable routing. Hardware requirements such as sensor interfaces, relay isolation, display visibility, and maintenance access shaped the enclosure and system layout.
 
 ## 🛠️ Proof of Work
 
@@ -166,9 +167,25 @@ The project requirements were successfully met and delivered within the specifie
 
 Following the first year of operation, scheduled maintenance was provided from our side. At the time of this writing, all deployed machines continue to operate successfully, demonstrating reliability under real-world operating conditions.
 
-## 🔧 Miscellaneous & Notes
+## ✏️ Miscellaneous & Notes
 
-### ✏️ Repository Naming Convention
+### 1. Project Backstory
+
+This requirement came from within my professional network, and since I knew them personally, I had to pitch in on an urgent basis.
+
+The pain point? The previous PCBs used in earlier machines kept failing every 6 to 9 months, causing repeated downtime. The client had already spent a significant amount on replacements and repairs.
+
+The original design was not only costly but also lacked basic engineering foresight. It used a separate, bulky power supply, had no proper connectors or terminals for heater integration, and offered no thermal isolation or reliable mounting.
+
+The previous client's control board cost 2.5 times more than the one I ultimately delivered and assembled.
+
+In the end, a reliable, cost‑effective controller replaced the overpriced design, and machine wire routing placeholders were included in the mechanical design.
+
+### 2. LCD Driver/Library Development
+
+Reused, tested and adapted an existing 16x2 LCD library for the MS51FB9AE, which is compatible with HD44780 and ST7066 controllers. The library supports modular pin mapping and 4-bit mode, allowing for flexible hardware configurations. It provides functions for initializing the LCD, sending commands and data, and displaying characters and strings on the screen.
+
+### 3. Repository Naming Convention
 
 Before I started naming projects in a sequence, I had worked on many projects. When I went back to reuse content or refer to specific details, I usually struggled to find them or had already lost track of them.
 
@@ -176,7 +193,7 @@ Over time, I decided to standardize the naming with “TJ” and continue using 
 
 Not all projects can be shared publicly because of client restrictions or ownership agreements. As a result, the sequence may have gaps where some projects are not listed or documented. However, I maintain a private record of all projects for my reference and learning.
 
-### ✏️ Privacy‑First Assets
+### 4. Privacy‑First Assets
 
 All images in this repository have been stripped of metadata to protect privacy and sensitive information. This ensures that no unintended data is shared when the images are viewed or downloaded.
 
@@ -187,19 +204,3 @@ exiftool -all= -P -overwrite_original *.png
 exiftool -all= -P -overwrite_original *.jpg
 exiftool -all= -P -overwrite_original *.mp4
 ```
-
-### ✏️ LCD Driver, Library Development
-
-Reused, tested and adapted an existing 16x2 LCD library for the MS51FB9AE, which is compatible with HD44780 and ST7066 controllers. The library supports modular pin mapping and 4-bit mode, allowing for flexible hardware configurations. It provides functions for initializing the LCD, sending commands and data, and displaying characters and strings on the screen.
-
-### ✏️ Project Backstory
-
-This requirement came from within my professional network, and since I knew them personally, I had to pitch in on an urgent basis.
-
-The pain point? The previous PCBs used in earlier machines kept failing every 6 to 9 months, causing repeated downtime. The client had already spent a significant amount on replacements and repairs.
-
-The original design was not only costly but also lacked basic engineering foresight. It used a separate, bulky power supply, had no proper connectors or terminals for heater integration, and offered no thermal isolation or reliable mounting.
-
-The previous client's control board was 2.5 times costlier than what I ultimately delivered and assembled.
-
-In the end, a reliable, cost‑effective controller replaced a overpriced design along with machine wire routing and place holders to run the wires are included in the machine mechanical design.
