@@ -6,7 +6,7 @@
 | Started           | 14th February 2023                               |
 | Stack             | C, Keil uVision, KiCAD 6.0.0, Nuvoton MCUs       |
 | Keywords          | MS51FB9AE, MAX6675, K-Type Thermocouple, T91-30A,<br>110/230V AC to 12V DC SMPS, LCD Display, Timer 2 |
-| Status            | Completed, Delivered to the client and archived. |
+| Status            | Completed and delivered to the client.           |
 
 ## 🚀 Overview
 
